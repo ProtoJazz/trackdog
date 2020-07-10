@@ -1,12 +1,12 @@
 defmodule Trackdog.User do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias Trackdog.Members.Member
   schema "users" do
     field :email, :string
     field :provider, :string
     field :token, :string
-
+    has_one :member, Member
     timestamps()
   end
 

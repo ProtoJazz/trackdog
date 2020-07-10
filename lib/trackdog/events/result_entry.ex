@@ -1,14 +1,14 @@
 defmodule Trackdog.Events.ResultEntry do
   use Ecto.Schema
   import Ecto.Changeset
-
+  alias Trackdog.Events.Result
+  alias Trackdog.Members.Member
   schema "result_entries" do
-    field :driver, :integer
+    belongs_to :driver, Member
     field :finish, :integer
     field :points, :integer
-    field :result, :integer
+    belongs_to :result, Result
     field :start, :integer
-
     timestamps()
   end
 

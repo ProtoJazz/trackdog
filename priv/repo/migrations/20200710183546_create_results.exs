@@ -3,9 +3,6 @@ defmodule Trackdog.Repo.Migrations.CreateResults do
 
   def change do
     create table(:results) do
-      add :event_id, :integer
-      add :result_entries, :integer
-
       timestamps()
     end
 

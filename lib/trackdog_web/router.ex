@@ -38,6 +38,13 @@ defmodule TrackdogWeb.Router do
 
     live "/events/:id", EventLive.Show, :show
     live "/events/:id/show/edit", EventLive.Show, :edit
+
+    live "/members", MemberLive.Index, :index
+    live "/members/new", MemberLive.Index, :new
+    live "/members/:id/edit", MemberLive.Index, :edit
+
+    live "/members/:id", MemberLive.Show, :show
+    live "/members/:id/show/edit", MemberLive.Show, :edit
   end
 
   scope "/auth", TrackdogWeb do

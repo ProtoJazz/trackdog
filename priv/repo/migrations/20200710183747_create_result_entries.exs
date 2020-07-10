@@ -6,8 +6,8 @@ defmodule Trackdog.Repo.Migrations.CreateResultEntries do
       add :start, :integer
       add :finish, :integer
       add :points, :integer
-      add :driver, :integer
-      add :result, :integer
+      add :result_id, references(:results, on_delete: :nothing)
+
 
       timestamps()
     end
