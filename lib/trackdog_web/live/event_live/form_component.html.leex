@@ -1,0 +1,22 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "event-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :date %>
+  <%= datetime_select f, :date %>
+  <%= error_tag f, :date %>
+
+  <%= label f, :track %>
+  <%= text_input f, :track %>
+  <%= error_tag f, :track %>
+
+  <%= label f, :result %>
+  <%= number_input f, :result %>
+  <%= error_tag f, :result %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>

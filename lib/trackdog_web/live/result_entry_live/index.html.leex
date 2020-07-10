@@ -1,0 +1,43 @@
+<h1>Listing Result entries</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal @socket, TrackdogWeb.ResultEntryLive.FormComponent,
+    id: @result_entry.id || :new,
+    title: @page_title,
+    action: @live_action,
+    result_entry: @result_entry,
+    return_to: Routes.result_entry_index_path(@socket, :index) %>
+<% end %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Start</th>
+      <th>Finish</th>
+      <th>Points</th>
+      <th>Driver</th>
+      <th>Result</th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="result_entries">
+    <%= for result_entry <- @result_entries do %>
+      <tr id="result_entry-<%= result_entry.id %>">
+        <td><%= result_entry.start %></td>
+        <td><%= result_entry.finish %></td>
+        <td><%= result_entry.points %></td>
+        <td><%= result_entry.driver %></td>
+        <td><%= result_entry.result %></td>
+
+        <td>
+          <span><%= live_redirect "Show", to: Routes.result_entry_show_path(@socket, :show, result_entry) %></span>
+          <span><%= live_patch "Edit", to: Routes.result_entry_index_path(@socket, :edit, result_entry) %></span>
+          <span><%= link "Delete", to: "#", phx_click: "delete", phx_value_id: result_entry.id, data: [confirm: "Are you sure?"] %></span>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New Result entry", to: Routes.result_entry_index_path(@socket, :new) %></span>

@@ -1,0 +1,30 @@
+<h2><%= @title %></h2>
+
+<%= f = form_for @changeset, "#",
+  id: "result_entry-form",
+  phx_target: @myself,
+  phx_change: "validate",
+  phx_submit: "save" %>
+
+  <%= label f, :start %>
+  <%= number_input f, :start %>
+  <%= error_tag f, :start %>
+
+  <%= label f, :finish %>
+  <%= number_input f, :finish %>
+  <%= error_tag f, :finish %>
+
+  <%= label f, :points %>
+  <%= number_input f, :points %>
+  <%= error_tag f, :points %>
+
+  <%= label f, :driver %>
+  <%= number_input f, :driver %>
+  <%= error_tag f, :driver %>
+
+  <%= label f, :result %>
+  <%= number_input f, :result %>
+  <%= error_tag f, :result %>
+
+  <%= submit "Save", phx_disable_with: "Saving..." %>
+</form>
